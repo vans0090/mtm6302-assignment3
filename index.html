@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Assignment3-Countdown</title>
+</head>
+<body>
+    <h1>Countdown Timer</h1>
+
+    <form id=form>
+            <select name="year" id="year">
+                <option value="2021" selected>2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+            </select>
+            <select name="month" id="month">
+                <option value="jan" id='m1' selected>January</option>
+                <option value="feb" id='m2'>February</option>
+                <option value="march" id='m3'>March</option>
+                <option value="apr" id='m4'>April</option>
+                <option value="may" id='m5'>May</option>
+                <option value="june" id='m6'>June</option>
+                <option value="july" id='m7'>July</option>
+                <option value="aug" id='m8'>August</option>
+                <option value="sep" id='m9'>September</option>
+                <option value="oct" id='m10'>October</option>
+                <option value="nov" id='m11'>November</option>
+                <option value="dec" id='m12'>December</option>
+            </select>
+            <div id = 'day-container'></div>
+            <button type='submit' id='submit'>Select day</button>
+    </form>
+
+    <div id='test'></div>
+
+    <script src='script.js'></script>
+</body>
+</html>
