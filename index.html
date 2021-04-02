@@ -12,6 +12,8 @@
     <h1>Countdown Timer</h1>
 
     <form id=form>
+        <div class=container>
+            <h2>Select a Year</h2>
             <select name="year" id="year">
                 <option value="2021" selected>2021</option>
                 <option value="2022">2022</option>
@@ -19,23 +21,34 @@
                 <option value="2024">2024</option>
                 <option value="2025">2025</option>
             </select>
+        </div>
+
+        <div class=container>
+            <h2>Select a Month</h2>     
             <select name="month" id="month">
-                <option value="jan" id='m1' selected>January</option>
-                <option value="feb" id='m2'>February</option>
-                <option value="march" id='m3'>March</option>
-                <option value="apr" id='m4'>April</option>
-                <option value="may" id='m5'>May</option>
-                <option value="june" id='m6'>June</option>
-                <option value="july" id='m7'>July</option>
-                <option value="aug" id='m8'>August</option>
-                <option value="sep" id='m9'>September</option>
-                <option value="oct" id='m10'>October</option>
-                <option value="nov" id='m11'>November</option>
-                <option value="dec" id='m12'>December</option>
+                <option value="1" id='m1' selected>January</option>
+                <option value="2" id='m2'>February</option>
+                <option value="3" id='m3'>March</option>
+                <option value="4" id='m4'>April</option>
+                <option value="5" id='m5'>May</option>
+                <option value="6" id='m6'>June</option>
+                <option value="7" id='m7'>July</option>
+                <option value="8" id='m8'>August</option>
+                <option value="9" id='m9'>September</option>
+                <option value="10" id='m10'>October</option>
+                <option value="11" id='m11'>November</option>
+                <option value="12" id='m12'>December</option>
             </select>
-            <div id = 'day-container'></div>
+        </div>
+
+        <div class=container>
+            <h2>Select a Date</h2>
+            <select name="day" id="day"></select>
+        </div>
             <button type='submit' id='submit'>Select day</button>
     </form>
+    <div id='result' class='result'></div>
+    <div id='reset'></div>
 
     <div id='test'></div>
 
