@@ -58,8 +58,22 @@ $submit.addEventListener('click', function(event){
    setInterval(function (){ 
 
     const currentDate = new Date()
-    const newDate = new Date($year.value, $month.value - 1, $day.value, 0, 0)
+    let newDate = new Date ($year.value, $month.value - 1, $day.value) 
     const difference = newDate.getTime() - currentDate.getTime()
+
+    localStorage.setItem('newDate', newDate)
+
+    let newDateString = localStorage.getItem('newDate')
+    let newDateAfterString = new Date(newDateString)
+    
+    function retrieveDate() {
+        if (newDateString !== 0) {
+            newDate = newDateAfterString
+
+            return newDate
+        }
+    }
+    retrieveDate ()
 
 function toDays(ms) {
     return Math.floor(ms/ 1000/ 60/ 60/ 24)
@@ -96,6 +110,7 @@ function toMinutes(ms) {
 
     return remainingSeconds
 }
+
 
 
 $result.innerHTML = `<h3 class='result'>Time Remaining</h3>
