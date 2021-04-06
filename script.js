@@ -6,6 +6,23 @@ const $submit = document.getElementById('submit')
 const $result = document.getElementById('result')
 const $reset = document.getElementById('reset')
 
+let newDate 
+const newDateString = localStorage.getItem('newDate')
+const newDateAfterString = Date(newDateString)
+
+
+
+function retrieveDate() {
+    if (newDateString) {
+        newDate = newDateAfterString
+    }
+    else {
+        newDate = ($year.value, $month.value - 1, $day.value) 
+    }}
+retrieveDate ()
+
+console.log (newDate)
+
 
 $month.addEventListener('click', function (){
 
@@ -55,25 +72,16 @@ $submit.addEventListener('click', function(event){
     $result.style.display = 'block'
     $reset.style.display = 'block'
 
+    newDate = ($year.value, $month.value - 1, $day.value)
+
+    localStorage.setItem('newDate', newDate) 
+
    setInterval(function (){ 
 
     const currentDate = new Date()
-    let newDate = new Date ($year.value, $month.value - 1, $day.value) 
     const difference = newDate.getTime() - currentDate.getTime()
 
-    localStorage.setItem('newDate', newDate)
-
-    let newDateString = localStorage.getItem('newDate')
-    let newDateAfterString = new Date(newDateString)
-    
-    function retrieveDate() {
-        if (newDateString !== 0) {
-            newDate = newDateAfterString
-
-            return newDate
-        }
-    }
-    retrieveDate ()
+   
 
 function toDays(ms) {
     return Math.floor(ms/ 1000/ 60/ 60/ 24)
@@ -128,6 +136,8 @@ $result.innerHTML = `<h3 class='result'>Time Remaining</h3>
                 
                     document.getElementById ('form').reset();
                     $form.style.display = 'block'
+
+                    // newDate = ''
                     
                 })
               
