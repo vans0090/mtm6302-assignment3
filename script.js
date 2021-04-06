@@ -14,10 +14,10 @@ const newDateAfterString = Date(newDateString)
 
 function retrieveDate() {
     if (newDateString) {
-        newDate = newDateAfterString
+        newDate = newDateString
     }
     else {
-        newDate = ($year.value, $month.value - 1, $day.value) 
+        newDate = Date($year.value, $month.value - 1, $day.value) 
     }}
 retrieveDate ()
 
@@ -72,7 +72,7 @@ $submit.addEventListener('click', function(event){
     $result.style.display = 'block'
     $reset.style.display = 'block'
 
-    newDate = ($year.value, $month.value - 1, $day.value)
+    newDate = new Date($year.value, $month.value - 1, $day.value)
 
     localStorage.setItem('newDate', newDate) 
 
