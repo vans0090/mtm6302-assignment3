@@ -8,20 +8,22 @@ const $reset = document.getElementById('reset')
 
 let newDate 
 const newDateString = localStorage.getItem('newDate')
-const newDateAfterString = Date(newDateString)
-
+const newDateAfterString = new Date(newDateString)
 
 
 function retrieveDate() {
     if (newDateString) {
-        newDate = newDateString
+        newDate = newDateAfterString
+        $form.style.display = 'none'
+        displayResult ()
     }
-    else {
-        newDate = Date($year.value, $month.value - 1, $day.value) 
-    }}
-retrieveDate ()
 
-console.log (newDate)
+    // else {
+    //     newDate = firstTimeDate
+    // }
+
+    return newDate
+}
 
 
 $month.addEventListener('click', function (){
@@ -65,87 +67,95 @@ $month.addEventListener('click', function (){
 
 // get date 
 
+let firstTimeDate
+console.log
+
 $submit.addEventListener('click', function(event){
     event.preventDefault()
-
     $form.style.display = 'none'
     $result.style.display = 'block'
     $reset.style.display = 'block'
 
-    newDate = new Date($year.value, $month.value - 1, $day.value)
+    firstTimeDate = new Date($year.value, $month.value - 1, $day.value)
+    newDate = firstTimeDate
+    localStorage.setItem('newDate', new Date($year.value, $month.value - 1, $day.value)) 
+    console.log (firstTimeDate)
+})
 
-    localStorage.setItem('newDate', newDate) 
+$submit.addEventListener('click', displayResult)     
 
-   setInterval(function (){ 
+function displayResult() {
+    setInterval(function (){ 
 
-    const currentDate = new Date()
-    const difference = newDate.getTime() - currentDate.getTime()
-
-   
-
-function toDays(ms) {
-    return Math.floor(ms/ 1000/ 60/ 60/ 24)
-}
-
-function toHours(ms) {
-    const days = toDays(ms)
-    const hours = Math.floor(ms/ 1000/ 60/ 60)
-
-    const remainingHours = hours - (days * 24)
-
-    return remainingHours
+        const currentDate = new Date()
+        
+        const difference = newDate.getTime() - currentDate.getTime()
     
-}
-
-function toMinutes(ms) {
-    const days = toDays(ms)
-    const hours = toHours(ms)
-    const minutes = Math.floor(ms/ 1000/ 60)
-
-    const remainingMinutes = minutes - ((days * 24* 60)+(hours*60))
-
-    return remainingMinutes
+       
     
+    function toDays(ms) {
+        return Math.floor(ms/ 1000/ 60/ 60/ 24)
+    }
+    
+    function toHours(ms) {
+        const days = toDays(ms)
+        const hours = Math.floor(ms/ 1000/ 60/ 60)
+    
+        const remainingHours = hours - (days * 24)
+    
+        return remainingHours
+        
+    }
+    
+    function toMinutes(ms) {
+        const days = toDays(ms)
+        const hours = toHours(ms)
+        const minutes = Math.floor(ms/ 1000/ 60)
+    
+        const remainingMinutes = minutes - ((days * 24* 60)+(hours*60))
+    
+        return remainingMinutes
+        
+    }
+    
+     function toSeconds(ms) {
+        const days = toDays(ms)
+        const hours = toHours(ms)
+        const minutes = toMinutes(ms)
+        const seconds = Math.floor(ms/ 1000)
+    
+        const remainingSeconds = seconds - ((days * 24* 60*60)+(hours*60*60)+(minutes*60))
+    
+        return remainingSeconds
+    }
+    
+    
+    
+    $result.innerHTML = `<h3 class='result'>Time Remaining</h3>
+                        <h4>Days : Hours : Minutes : Seconds</h4>
+                        <p><span>${toDays(difference)}</span>:<span> ${toHours(difference)} </span> : <span> ${toMinutes(difference)} </span> : <span> ${toSeconds(difference)}</span></p>`
+                    }, 1000)
+    
+                    setTimeout(function () {
+                        $reset.innerHTML = `<button type='submit' id='reset'>Select a new date</button>`
+
+                    }, 1000)
+
 }
 
- function toSeconds(ms) {
-    const days = toDays(ms)
-    const hours = toHours(ms)
-    const minutes = toMinutes(ms)
-    const seconds = Math.floor(ms/ 1000)
 
-    const remainingSeconds = seconds - ((days * 24* 60*60)+(hours*60*60)+(minutes*60))
+$reset.addEventListener('click', function(){
+    $reset.style.display = 'none'
+    $result.style.display = 'none'
 
-    return remainingSeconds
-}
-
+    document.getElementById ('form').reset();
+    $form.style.display = 'block'
+    
+})
 
 
-$result.innerHTML = `<h3 class='result'>Time Remaining</h3>
-                    <p><span>${toDays(difference)}</span>:<span> ${toHours(difference)} </span> : <span> ${toMinutes(difference)} </span> : <span> ${toSeconds(difference)}</span></p>`
-                }, 1000)
-
-                setTimeout(function () {
-                    $reset.innerHTML = `<button type='submit' id='reset'>Select a new date</button>`
-                }, 1000)
-                
-                
-                $reset.addEventListener('click', function(){
-                    $reset.style.display = 'none'
-                    $result.style.display = 'none'
-                
-                    document.getElementById ('form').reset();
-                    $form.style.display = 'block'
-
-                    // newDate = ''
-                    
-                })
-              
-            })
-
-
-
-
+retrieveDate ()
+console.log (newDate)
 
 
 

@@ -1,5 +1,6 @@
 body {
     margin: auto;
+    width : 80%;
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
     background-color: rgb(247, 240, 232);
@@ -10,7 +11,7 @@ form{
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     color: rgb(75, 53, 32); 
 }
 h2{
@@ -18,22 +19,32 @@ h2{
     margin-left: 20%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-bottom: -0.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 select, button {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 0.25rem 1.5rem;
-    margin: 1rem;
+    margin: 0.5rem;
     background-color: blanchedalmond;
-    border-width: 0.35rem;
+    border-width: 0.25rem;
     border-radius: 1rem;
     color: rgb(75, 53, 32);
     width: 60%;
 }
 
 button {
-    width: 80%;
+    width: 58%;
+    background-color: rgb(80, 66, 46);
+    border-color: blanchedalmond;
+    color:blanchedalmond;
+    padding: 0.5rem 1.5rem;
+}
+
+button:hover {
+    background-color: blanchedalmond;
+    color:rgb(80, 66, 46);
+    border-color: rgb(75, 53, 32)
 }
 
 .container {
@@ -50,12 +61,16 @@ button {
     border-radius: 2rem;
 }
 
-span {
+p span {
     background-color: white;
     padding: 0.35rem 0.5rem;
     margin: 0.3rem;
     text-align: center;
     border-radius: 0.5rem;
+}
+
+h4 {
+    font-size: 1.3rem
 }
 
 #reset button{
