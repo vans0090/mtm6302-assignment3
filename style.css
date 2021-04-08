@@ -1,3 +1,6 @@
+/* Styling the project */
+
+/* Body Styling */
 body {
     margin: auto;
     width : 80%;
@@ -6,6 +9,7 @@ body {
     background-color: rgb(247, 240, 232);
 }
 
+/* form styling */
 form{
     text-align: center;
     background-color: rgba(187, 163, 145, 0.438);
@@ -14,11 +18,14 @@ form{
     margin: 0 2rem;
 }
 
+/* Main heading styling */
 h1 {
     font-size: 4rem;
     font-family: 'RocknRoll One', sans-serif;
     color: rgb(75, 53, 32); 
 }
+
+/* Form input headings styling */
 h2{
     text-align: left;
     margin-left: 20%;
@@ -28,6 +35,7 @@ h2{
     font-family: 'Rubik', sans-serif;
 }
 
+/* Form input fields styling */
 select, button {
     font-size: 1.5rem;
     font-family: 'Karla', sans-serif;
@@ -38,12 +46,14 @@ select, button {
     width: 60%;
 }
 
+/* Adding hover effects */
 select:hover {
     background-color: rgb(80, 66, 46);
     color:blanchedalmond;
     cursor: pointer;
 }
 
+/* Button styling */
 button {
     width: 58%;
     background-color: rgb(80, 66, 46);
@@ -53,16 +63,19 @@ button {
     font-size: 2rem;
 }
 
+/* adding button hover effects */
 button:hover {
     cursor: pointer;
     background-color: blanchedalmond;
     color:rgb(80, 66, 46);
 }
 
+/* Class added to keep year, month , day separated */
 .container {
     margin: 2.5rem 1rem;
 }
 
+/* Styling result or countdown display of the dates */
 .result {
     text-align: center;
     /* font-size: 2rem ;  */
@@ -74,6 +87,7 @@ button:hover {
     border-radius: 2rem;
 }
 
+/* styling of the content in the result */
 p span {
     background-color: white;
     padding: 0.35rem 0.5rem;
@@ -81,6 +95,7 @@ p span {
     text-align: center;
 }
 
+/* general customization of font-sizes */
 p {
     font-size: 2rem;
 }
@@ -93,6 +108,7 @@ h3 {
     font-size: 3rem;
 }
 
+/* styling the reset button */
 #reset button{
     font-size: 2rem;
     padding: 1rem;

@@ -11,8 +11,10 @@
     <title>Assignment3-Countdown</title>
 </head>
 <body>
+    <!-- Heading -->
     <h1>Countdown Timer</h1>
 
+    <!-- Declaring form for year and month -->
     <form id=form>
         <div class=container>
             <h2>Select a Year</h2>
@@ -45,11 +47,15 @@
 
         <div class=container>
             <h2>Select a Date</h2>
-            <select name="day" id="day"></select>
+            <select name="day" id="day"></select> <!--Days will be added dynamically-->
         </div>
             <button type='submit' id='submit'>Select day</button>
     </form>
+
+    <!-- Div for displaying result -->
     <div id='result' class='result'></div>
+
+    <!-- Div to reset the date -->
     <div id='reset'></div>
 
     <script src='script.js'></script>

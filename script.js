@@ -1,3 +1,5 @@
+// declaring variables from the html document
+
 const $form = document.getElementById('form')
 const $year = document.getElementById('year')
 const $month = document.getElementById('month')
@@ -6,11 +8,14 @@ const $submit = document.getElementById('submit')
 const $result = document.getElementById('result')
 const $reset = document.getElementById('reset')
 
-let newDate 
+
+let newDate //variable to store the new date , (either from local storage or from user entry)
+
+// variable to get and store if the date exists in the local storage
 const newDateString = localStorage.getItem('newDate')
 const newDateAfterString = new Date(newDateString)
 
-
+//function retrieves(if) date from the local storage
 function retrieveDate() {
     if (newDateString) {
         newDate = newDateAfterString
@@ -18,14 +23,11 @@ function retrieveDate() {
         displayResult ()
     }
 
-    // else {
-    //     newDate = firstTimeDate
-    // }
-
     return newDate
 }
 
 
+//adding event listener on month select tag to display a specific number of days as per the month selecetd
 $month.addEventListener('click', function (){
 
     function printDays() {
@@ -65,34 +67,36 @@ $month.addEventListener('click', function (){
 })
 
 
-// get date 
+let firstTimeDate //varaiable to store new date if nothing is in local storage
 
-let firstTimeDate
-console.log
-
+//event listener to submit the form data 
 $submit.addEventListener('click', function(event){
     event.preventDefault()
+
+    //adjusting visibility modes
     $form.style.display = 'none'
     $result.style.display = 'block'
     $reset.style.display = 'block'
 
     firstTimeDate = new Date($year.value, $month.value - 1, $day.value)
     newDate = firstTimeDate
+
+    //setting new date to local storage for further usage
     localStorage.setItem('newDate', new Date($year.value, $month.value - 1, $day.value)) 
-    console.log (firstTimeDate)
 })
 
-$submit.addEventListener('click', displayResult)     
+$submit.addEventListener('click', displayResult)     //calling the function to get the timer work
 
+//function to calculate the result and display it
 function displayResult() {
-    setInterval(function (){ 
+    setInterval(function (){                    //setInterval() to get the countdown per second working
 
         const currentDate = new Date()
         
         const difference = newDate.getTime() - currentDate.getTime()
     
        
-    
+    //calculating the difference using various functions
     function toDays(ms) {
         return Math.floor(ms/ 1000/ 60/ 60/ 24)
     }
@@ -128,34 +132,36 @@ function displayResult() {
     
         return remainingSeconds
     }
-    
-    
-    
+
+    //displaying result on the html
     $result.innerHTML = `<h3 class='result'>Time Remaining</h3>
                         <h4>Days : Hours : Minutes : Seconds</h4>
                         <p><span>${toDays(difference)}</span>:<span> ${toHours(difference)} </span> : <span> ${toMinutes(difference)} </span> : <span> ${toSeconds(difference)}</span></p>`
                     }, 1000)
     
-                    setTimeout(function () {
+                    setTimeout(function () {       //setTimrout( to display the button with the result, 1 sec late)
                         $reset.innerHTML = `<button type='submit' id='reset'>Select a new date</button>`
-
                     }, 1000)
 
 }
 
 
+//reset function to select a new date 
 $reset.addEventListener('click', function(){
+
+    //adjusting visibility modes
     $reset.style.display = 'none'
     $result.style.display = 'none'
 
+    //resetting the form to the original first time load
     document.getElementById ('form').reset();
     $form.style.display = 'block'
     
 })
 
-
+//calling the retrieve function to get item from local storage if item exists
+//works when the page loads
 retrieveDate ()
-console.log (newDate)
 
 
 
